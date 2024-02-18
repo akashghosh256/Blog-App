@@ -37,7 +37,9 @@ const Header = () => {
     <>
       <AppBar position="sticky">
         <Toolbar>
-          <Typography variant="h4">My Blog APP</Typography>
+        <Link to="/" style={{textDecoration:"none"}}>
+  <Typography variant="h4" >My Blog APP</Typography>
+</Link>
           {isLogin && (
             <Box display={"flex"} marginLeft="auto" marginRight={"auto"}>
               <Tabs

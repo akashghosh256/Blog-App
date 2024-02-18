@@ -36,6 +36,10 @@ const Login = () => {
         toast.success("User login Successfully");
         navigate("/");
       }
+      else{
+       // alert("Wrong Email or Password!");
+        toast.error("Wrong Email or Password!");
+      }
     } catch (error) {
       console.log(error);
     }
