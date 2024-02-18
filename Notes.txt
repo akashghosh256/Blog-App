@@ -5,7 +5,7 @@ npm i concurrently
 useEffect
 elastic search
 
-
+client cmd = npm run build
 
 
 

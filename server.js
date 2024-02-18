@@ -6,7 +6,11 @@ const dotenv = require('dotenv');
 const connectDB = require("./config/db");
 
 
+var path = require("path");
+var url = require("url");
 
+var __filename = url.fileURLToPath(import.meta.url);
+var __dirname = path.dirname(__filename);
 
 //env config
 dotenv.config();
@@ -28,6 +32,7 @@ const app = express();
 app.use(cors());
 app.use(express.json()); //allows to recieve json data from frontend/client
 app.use(morgan("dev"));
+app.use(express.static(path.join(__dirname, "./client/build"))); //for offline diable this
 
 //routes
 // app.get("/", (req, res) => {
@@ -40,6 +45,10 @@ app.use('/api/v1/user', userRoutes);
 app.use('/api/v1/blog', blogRoutes);
 
 
+//web  hosting  route = for offline disable this
+app.get('*', function (req, res) {
+  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+});
 
 
 //PORT
